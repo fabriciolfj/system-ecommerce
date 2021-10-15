@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: shopping-cart
+  datasource:
+    url: r2dbc:postgres://localhost:5432/shopping
+    username: postgres
+    password: postgres
