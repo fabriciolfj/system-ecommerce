@@ -22,4 +22,5 @@ public class CartEntity {
     private String customer;
     private String code;
     private BigDecimal total;
+    private String status;
 }

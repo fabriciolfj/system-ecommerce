@@ -15,4 +15,5 @@ public class Cart {
     @EqualsAndHashCode.Include
     private String code;
     private BigDecimal total;
+    private Status status = Status.PENDING;
 }
