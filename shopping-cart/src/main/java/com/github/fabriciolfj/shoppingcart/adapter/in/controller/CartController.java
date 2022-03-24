@@ -21,8 +21,8 @@ public class CartController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Void> create(@Valid @RequestBody final CartRequestDTO dto) {
-        return just(dto)
+    public Mono<Void> create(@Valid @RequestBody final Mono<CartRequestDTO> dto) {
+        return dto
                 .map(CartMapper.INSTANCE::toDomain)
                 .flatMap(cartCreate::execute)
                 .log();
