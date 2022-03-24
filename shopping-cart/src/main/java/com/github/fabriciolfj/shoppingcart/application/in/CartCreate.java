@@ -1,9 +1,17 @@
 package com.github.fabriciolfj.shoppingcart.application.in;
 
+import com.github.fabriciolfj.shoppingcart.application.CartService;
 import com.github.fabriciolfj.shoppingcart.domain.Cart;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-public interface CartCreate {
+@RequiredArgsConstructor
+@Service
+public class CartCreate implements CartService {
 
-    Mono<Void> execute(final Cart cart);
+    @Override
+    public Mono<Void> execute(Cart cart) {
+        return null;
+    }
 }

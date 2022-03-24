@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.entity;
+package com.github.fabriciolfj.shoppingcart.adapter.out.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,16 +9,18 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Table("cart")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table("cartitems")
-public class CartItemsEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CartEntity {
 
     @Id
+    @EqualsAndHashCode.Include
     private Long id;
-    private String product;
-    private BigDecimal price;
-    private int amount;
+    private String customer;
+    private String code;
+    private BigDecimal total;
+    private String status;
 }

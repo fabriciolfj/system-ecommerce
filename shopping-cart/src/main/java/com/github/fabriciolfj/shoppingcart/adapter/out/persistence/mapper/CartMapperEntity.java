@@ -1,7 +1,7 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.mapper;
+package com.github.fabriciolfj.shoppingcart.adapter.out.persistence.mapper;
 
-import com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.entity.CartEntity;
-import com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.entity.CartItemsEntity;
+import com.github.fabriciolfj.shoppingcart.adapter.out.persistence.entity.CartEntity;
+import com.github.fabriciolfj.shoppingcart.adapter.out.persistence.entity.CartItemsEntity;
 import com.github.fabriciolfj.shoppingcart.domain.Cart;
 import com.github.fabriciolfj.shoppingcart.domain.CartItems;
 import org.mapstruct.factory.Mappers;

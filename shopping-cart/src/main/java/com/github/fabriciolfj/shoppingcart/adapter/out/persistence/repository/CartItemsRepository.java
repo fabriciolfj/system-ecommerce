@@ -1,6 +1,6 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.repository;
+package com.github.fabriciolfj.shoppingcart.adapter.out.persistence.repository;
 
-import com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.entity.CartItemsEntity;
+import com.github.fabriciolfj.shoppingcart.adapter.out.persistence.entity.CartItemsEntity;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 public interface CartItemsRepository extends ReactiveCrudRepository<CartItemsEntity, Long> {

@@ -1,7 +1,7 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.out.persistence;
+package com.github.fabriciolfj.shoppingcart.adapter.out.persistence;
 
-import com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.repository.CartItemsRepository;
-import com.github.fabriciolfj.shoppingcart.adatpter.out.persistence.repository.CartRepository;
+import com.github.fabriciolfj.shoppingcart.adapter.out.persistence.repository.CartItemsRepository;
+import com.github.fabriciolfj.shoppingcart.adapter.out.persistence.repository.CartRepository;
 import com.github.fabriciolfj.shoppingcart.application.out.SaveCart;
 import com.github.fabriciolfj.shoppingcart.domain.Cart;
 import lombok.RequiredArgsConstructor;

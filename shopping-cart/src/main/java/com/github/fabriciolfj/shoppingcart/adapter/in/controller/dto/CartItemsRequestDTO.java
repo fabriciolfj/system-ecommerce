@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.in.controller.dto;
+package com.github.fabriciolfj.shoppingcart.adapter.in.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

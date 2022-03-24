@@ -1,7 +1,7 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.in.controller;
+package com.github.fabriciolfj.shoppingcart.adapter.in.controller;
 
-import com.github.fabriciolfj.shoppingcart.adatpter.in.controller.dto.CartRequestDTO;
-import com.github.fabriciolfj.shoppingcart.adatpter.in.controller.mapper.CartMapper;
+import com.github.fabriciolfj.shoppingcart.adapter.in.controller.dto.CartRequestDTO;
+import com.github.fabriciolfj.shoppingcart.adapter.in.controller.mapper.CartMapper;
 import com.github.fabriciolfj.shoppingcart.application.in.CartCreate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

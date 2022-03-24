@@ -1,6 +1,6 @@
-package com.github.fabriciolfj.shoppingcart.adatpter.in.controller.mapper;
+package com.github.fabriciolfj.shoppingcart.adapter.in.controller.mapper;
 
-import com.github.fabriciolfj.shoppingcart.adatpter.in.controller.dto.CartRequestDTO;
+import com.github.fabriciolfj.shoppingcart.adapter.in.controller.dto.CartRequestDTO;
 import com.github.fabriciolfj.shoppingcart.domain.Cart;
 import org.mapstruct.factory.Mappers;
 
