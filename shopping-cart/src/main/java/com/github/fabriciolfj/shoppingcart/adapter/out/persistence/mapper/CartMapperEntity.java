@@ -6,11 +6,25 @@ import com.github.fabriciolfj.shoppingcart.domain.Cart;
 import com.github.fabriciolfj.shoppingcart.domain.CartItems;
 import org.mapstruct.factory.Mappers;
 
-public interface CartMapperEntity {
+public class CartMapperEntity {
 
-    CartMapperEntity INSTANCE = Mappers.getMapper(CartMapperEntity.class);
+    private CartMapperEntity() { }
 
-    CartEntity toCartEntity(final Cart cart);
+    public static CartEntity toCartEntity(final Cart cart) {
+        return CartEntity.builder()
+                .code(cart.getCode())
+                .customer(cart.getCustomer())
+                .status(cart.getStatus().getDescribe())
+                .total(cart.getTotal())
+                .build();
+    }
 
-    CartItemsEntity toCartItemsEntity(final CartItems items);
+    public static CartItemsEntity toCartItemsEntity(final CartItems item, final Long cart) {
+        return CartItemsEntity.builder()
+                .amount(item.getAmount())
+                .price(item.getPrice())
+                .product(item.getProduct())
+                .cartId(cart)
+                .build();
+    }
 }

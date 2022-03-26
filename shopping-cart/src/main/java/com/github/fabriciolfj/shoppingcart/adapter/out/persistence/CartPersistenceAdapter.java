@@ -11,8 +11,11 @@ import com.github.fabriciolfj.shoppingcart.domain.CartItems;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.List;
 
@@ -25,23 +28,40 @@ public class CartPersistenceAdapter implements SaveCart {
     private final CartItemsRepository cartItemsRepository;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Mono<Void> execute(final Cart cart) {
-        return Mono.zip(Mono.just(cart), Mono.just(cart.getItems()))
-                .flatMap(data -> {
-                    saveCart(data.getT1());
-                    saveItems(data.getT2());
+        return saveCart(cart)
+                .map(c -> c.getId())
+                .flatMap(id -> saveItems(cart.getItems(), id)
+                        .collectList())
+                .flatMap(r -> {
+                    log.info("Items save {}", r.size());
                     return Mono.empty();
                 });
     }
 
     private Mono<CartEntity> saveCart(final Cart cart) {
-        return cartRepository.save(CartMapperEntity.INSTANCE.toCartEntity(cart));
+        return cartRepository.save(CartMapperEntity.toCartEntity(cart))
+                .log();
     }
 
-    private Flux<CartItemsEntity> saveItems(final List<CartItems> items) {
-        return Flux.fromStream(items.stream())
-                .map(it -> CartMapperEntity.INSTANCE.toCartItemsEntity(it))
-                .flatMap(item -> cartItemsRepository.save(item))
-                .doOnNext(v -> log.info("Item save: {}", v));
+    private Flux<CartItemsEntity> saveItems(final List<CartItems> items, final Long cartId) {
+        return Flux.fromIterable(items)
+                //.map(it -> CartMapperEntity.toCartItemsEntity(it, cartId))
+                .flatMap(item -> {
+                    var entity = CartMapperEntity.toCartItemsEntity(item, cartId);
+                    return cartItemsRepository.save(entity);
+                })
+                .doOnNext(v -> log.info("Item save: {}", v))
+                .doOnError(e -> log.error(e.getMessage()));
     }
+
+    /*private Mono<Void> saveItems(final List<CartItems> items, final Long cartId) {
+        return Flux.fromIterable(items)
+                .map(it -> CartMapperEntity.toCartItemsEntity(it, cartId))
+                .flatMap(item -> cartItemsRepository.save(item))
+                .doOnNext(v -> log.info("Item save: {}", v))
+                .doOnError(e -> log.error(e.getMessage()))
+                .then();
+    }*/
 }
