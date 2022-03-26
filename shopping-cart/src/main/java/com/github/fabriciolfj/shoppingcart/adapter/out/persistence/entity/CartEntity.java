@@ -1,5 +1,4 @@
 package com.github.fabriciolfj.shoppingcart.adapter.out.persistence.entity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

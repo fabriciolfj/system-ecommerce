@@ -3,6 +3,7 @@ package com.github.fabriciolfj.shoppingcart.domain;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Builder
 @Data
@@ -16,4 +17,5 @@ public class Cart {
     private String code;
     private BigDecimal total;
     private Status status = Status.PENDING;
+    private List<CartItems> items;
 }
